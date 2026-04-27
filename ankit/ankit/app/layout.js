@@ -14,6 +14,10 @@ const ovo = Ovo({
 export const metadata = {
   title: "Portfolio - Ankit Kunwar",
   description: "Portfolio of Ankit Kunwar, a Computer Engineering student specializing in software development and innovative technology solutions.",
+  // Add the AdSense meta tag here:
+  other: {
+    "google-adsense-account": "ca-pub-9623933683627873",
+  },
 };
 
 export default function RootLayout({ children }) {
