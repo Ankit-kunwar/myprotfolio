@@ -1,9 +1,13 @@
-import React from "react";
+"use client";
+
+import React, { useRef, useState } from "react";
 import Image from "next/image";
-import { useRef } from "react";
 import { assets } from "@/assets/data/assets";
+import PrayerBreakdownModal from "./PrayerBreakdownModal";
+
 const Navbar = () => {
   const sideMenuRef = useRef();
+  const [prayerOpen, setPrayerOpen] = useState(false);
   const openMenu = () => {
     sideMenuRef.current.style.transform = "translateX(-16rem)";
   };
@@ -44,7 +48,14 @@ const Navbar = () => {
             <a href="#contact">Contact me</a>
           </li>
         </ul>
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-3 sm:gap-4">
+          <button
+            type="button"
+            onClick={() => setPrayerOpen(true)}
+            className="max-w-[10.5rem] lg:max-w-[13rem] xl:max-w-none text-left leading-tight px-3 sm:px-4 py-2 border border-rose-400 text-rose-600 bg-white/80 backdrop-blur-md rounded-full text-[11px] sm:text-xs xl:text-sm font-medium hover:bg-rose-50 transition-colors"
+          >
+            Does God prayer Work Mathematical Breakdown
+          </button>
           <a
             href="#contact"
             className="hidden lg:flex items-center gap-3 px-10 py-2.5 border border-gray-500 rounded-full ml-4"
@@ -68,6 +79,18 @@ const Navbar = () => {
               className="w-5 cursor-pointer"
             />
           </div>
+          <li>
+            <button
+              type="button"
+              className="text-left"
+              onClick={() => {
+                closeMenu();
+                setPrayerOpen(true);
+              }}
+            >
+              Does God prayer Work Mathematical Breakdown
+            </button>
+          </li>
           <li>
             <a href="#top" onClick={closeMenu}>
               Home
@@ -95,6 +118,10 @@ const Navbar = () => {
           </li>
         </ul>
       </nav>
+      <PrayerBreakdownModal
+        open={prayerOpen}
+        onClose={() => setPrayerOpen(false)}
+      />
     </>
   );
 };
